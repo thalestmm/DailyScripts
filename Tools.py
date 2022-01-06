@@ -3,13 +3,17 @@ import smtplib
 from email.mime.text import MIMEText
 import os
 
+
 class Tools:
-    def __init__(self,EMAIL_TO = "meier.thales@gmail.com"):
+    def __init__(self,SMTP_PASSWORD ,EMAIL_TO = "meier.thales@gmail.com"):
         self.EMAIL_TO = EMAIL_TO
         self.SMTP_SERVER = "smtp.gmail.com"
         self.SMTP_PORT = 587
         self.SMTP_USERNAME = "thalestmmpython@gmail.com"
-        self.SMTP_PASSWORD = input("Type in the password: ")
+        if not SMTP_PASSWORD:
+            self.SMTP_PASSWORD = input("Type in the password: ")
+        else:
+            self.SMTP_PASSWORD = SMTP_PASSWORD
         self.EMAIL_TO = "meier.thales@gmail.com"
         self.EMAIL_FROM = "Your Daily Update"
         self.EMAIL_SUBJECT = f"{datetime.date.today()} Update"
